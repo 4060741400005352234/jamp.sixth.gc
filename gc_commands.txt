@@ -49,4 +49,9 @@ JIT  - r9_20130920_46510ifx7
 GC   - GA24_Java6_SR16_20140626_1848_B204542)
 JCL  - 20140704_01
 ------------------
+https://habrahabr.ru/post/154089/
+------------------
 java -verbose:gc -Xverbosegclog:gc_out.log -Xms10m -Xmx20m -Xgcpolicy:optavgpause -jar jamp.sixth.gc.jar
+java -verbose:gc -Xverbosegclog:gc_out.log -Xms10m -Xmx20m -Xgcpolicy:optthruput -jar jamp.sixth.gc.jar
+java -verbose:gc -Xverbosegclog:gc_out.log -Xms10m -Xmx20m -Xgcpolicy:gencon -jar jamp.sixth.gc.jar
+java -verbose:gc -Xverbosegclog:gc_out.log -Xms10m -Xmx20m -Xgcpolicy:balanced -jar jamp.sixth.gc.jar
