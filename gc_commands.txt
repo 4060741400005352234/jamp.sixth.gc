@@ -1,0 +1,52 @@
+java version "1.7.0"
+Java(TM) SE Runtime Environment (build 1.7.0-b147)
+Java HotSpot(TM) Client VM (build 21.0-b17, mixed mode, sharing)
+1.
+java -Xms6m -Xmx18m -Xmn2m -XX:PermSize=20m -XX:MaxPermSize=30m -XX:+UseSerialGC -jar jamp.sixth.gc.jar (78+4) 40.594ms + 24.197
+						|
+java -Xms6m -Xmx18m -Xmn5m -XX:PermSize=20m -XX:MaxPermSize=30m -XX:+UseSerialGC -jar jamp.sixth.gc.jar (33+4) 35.492ms + 15.111
+						|
+java -Xms6m -Xmx18m -Xmn1m -XX:PermSize=20m -XX:MaxPermSize=30m -XX:+UseSerialGC -jar jamp.sixth.gc.jar (140+5) 91.157ms + 28.986ms
+
+2.
+java -Xms3m -Xmx12m -Xmn1m -XX:PermSize=20m -XX:MaxPermSize=20m -XX:+UseParallelGC -jar jamp.sixth.gc.jar (285+7) 224.905ms + 35.485ms
+																|	
+java -Xms3m -Xmx12m -Xmn1m -XX:PermSize=20m -XX:MaxPermSize=20m -XX:ParallelGCThreads=1 -XX:+UseParallelGC -jar jamp.sixth.gc.jar (258+6) 115.102ms + 27.453ms
+																					  |
+java -Xms3m -Xmx12m -Xmn1m -XX:PermSize=20m -XX:MaxPermSize=20m -XX:ParallelGCThreads=2 -XX:+UseParallelGC -jar jamp.sixth.gc.jar (270+7) 88.350ms + 29.817ms
+																					  |
+java -Xms3m -Xmx12m -Xmn1m -XX:PermSize=20m -XX:MaxPermSize=20m -XX:ParallelGCThreads=4 -XX:+UseParallelGC -jar jamp.sixth.gc.jar (287+8) 92.490ms + 36.372ms
+						|
+java -Xms3m -Xmx12m -Xmn2m -XX:PermSize=20m -XX:MaxPermSize=20m -XX:ParallelGCThreads=4 -XX:+UseParallelGC -jar jamp.sixth.gc.jar (104+4) 53.694ms + 14.552ms
+																					  |
+java -Xms3m -Xmx12m -Xmn2m -XX:PermSize=20m -XX:MaxPermSize=20m -XX:ParallelGCThreads=2 -XX:+UseParallelGC -jar jamp.sixth.gc.jar (110+4) 46.342ms + 16.925ms
+
+3.
+java -Xms9m -Xmx18m -Xmn3m -XX:PermSize=40m -XX:MaxPermSize=40m -XX:+UseParallelOldGC -jar jamp.sixth.gc.jar (476+60) 738.256ms + 383.106ms
+						|
+java -Xms9m -Xmx18m -Xmn5m -XX:PermSize=40m -XX:MaxPermSize=40m -XX:+UseParallelOldGC -jar jamp.sixth.gc.jar (183+28) 280.738ms + 173.393ms
+
+4.
+java -Xms6m -Xmx18m -Xmn2m -XX:PermSize=20m -XX:MaxPermSize=30m -XX:+UseConcMarkSweepGC -XX:ParallelCMSThreads=2 -jar jamp.sixth.gc.jar (362+63) 501.719ms + 178.920ms
+
+5.
+java -Xms4m -Xmx17m -Xmn2m -XX:PermSize=12m -XX:MaxPermSize=18m -XX:+UseG1GC -jar jamp.sixth.gc.jar (180+15) 287.704ms + 111.266ms
+
+1-5.
+java -Xms6m -Xmx18m -Xmn2m -XX:PermSize=20m -XX:MaxPermSize=30m -XX:+UseSerialGC -jar jamp.sixth.gc.jar (334+41) 411.730ms + 269.000ms
+java -Xms6m -Xmx18m -Xmn2m -XX:PermSize=20m -XX:MaxPermSize=30m -XX:+UseParallelGC -jar jamp.sixth.gc.jar (652+38) 577.958ms + 191.482ms
+java -Xms6m -Xmx18m -Xmn2m -XX:PermSize=20m -XX:MaxPermSize=30m -XX:+UseParallelGC -XX:ParallelGCThreads=4 -jar jamp.sixth.gc.jar (660+49) 485.420ms + 256.769ms
+java -Xms6m -Xmx18m -Xmn2m -XX:PermSize=20m -XX:MaxPermSize=30m -XX:+UseParallelOldGC -jar jamp.sixth.gc.jar (659+43) 660.760ms + 264.611ms
+java -Xms6m -Xmx18m -Xmn2m -XX:PermSize=20m -XX:MaxPermSize=30m -XX:+UseConcMarkSweepGC -XX:ParallelCMSThreads=2 -jar jamp.sixth.gc.jar (345+50) 442.493ms + 169.439ms
+java -Xms6m -Xmx18m -Xmn2m -XX:PermSize=20m -XX:MaxPermSize=30m -XX:+UseG1GC -jar jamp.sixth.gc.jar (179+14) 268.993ms + 105.570ms
+-------------------
+java version "1.6.0"
+Java(TM) SE Runtime Environment (build pwi3260sr16fp1ifix-20140908_01(SR16 FP1+IV64658+IV64659))
+IBM J9 VM (build 2.4, JRE 1.6.0 IBM J9 2.4 Windows 7 x86-32 jvmwi3260sr16-20140626_204542 (JIT enabl
+ed, AOT enabled)
+J9VM - 20140626_204542
+JIT  - r9_20130920_46510ifx7
+GC   - GA24_Java6_SR16_20140626_1848_B204542)
+JCL  - 20140704_01
+------------------
+java -verbose:gc -Xverbosegclog:gc_out.log -Xms10m -Xmx20m -Xgcpolicy:optavgpause -jar jamp.sixth.gc.jar

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="jamp.sixth.gc:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/jamp_sixth_gc_jar</output-path>
+    <root id="archive" name="jamp.sixth.gc.jar">
+      <element id="module-output" name="jamp.sixth.gc" />
+    </root>
+  </artifact>
+</component>
