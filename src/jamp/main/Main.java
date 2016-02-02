@@ -20,6 +20,7 @@ public class Main {
         for (int i = 0; i < Constant.NUMBER_OF_REQUEST_THREADS; i++) {
             execService.execute(new MemoryConsumer());
         }
+        execService.shutdown();
     }
 
     private static void stop() {
